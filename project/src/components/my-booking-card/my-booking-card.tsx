@@ -29,7 +29,7 @@ function MyBookingCard({
             srcSet={`${quest.previewImg} 2x`}
             width='344'
             height='232'
-            alt=''
+            alt='Превью квеста'
           />
         </picture>
       </div>

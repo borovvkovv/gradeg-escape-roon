@@ -44,7 +44,7 @@ function ContactsScreen(): JSX.Element {
                 <dd className='contacts__dd'>
                   <address className='contacts__address'>
                     Санкт-Петербург,
-                    <br /> Набережная реки Карповка, д 5П
+                    <br /> {headquarterGeoMapPoint.location.address}
                   </address>
                 </dd>
               </div>

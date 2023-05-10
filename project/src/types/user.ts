@@ -11,3 +11,9 @@ export type Credentials = {
 export type LocationState = {
   prevPath: string;
 }
+
+export type UserCredentialInputs = {
+  login: string;
+  password: string;
+  agreement: boolean;
+};

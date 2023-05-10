@@ -23,12 +23,6 @@ export const appProcess = createSlice({
       state.filter = action.payload;
     },
   },
-  // extraReducers(builder) {
-  //   builder
-  //     .addCase(sendCommentAction.rejected, (state, action) => {
-  //       state.error = action.error.message ?? 'something went wrong';
-  //     });
-  // },
 });
 
 export const { setFilter } = appProcess.actions;

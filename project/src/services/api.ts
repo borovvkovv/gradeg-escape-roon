@@ -39,19 +39,21 @@ export const createAPI = (): AxiosInstance => {
   api.interceptors.response.use(
     (response) => response,
     (error: AxiosError<{message: string; details: [{messages: [string]}]}>) => {
-      if (error.response?.data.message && shouldDisplayError(error.response)) {
-        if (error.response.status === StatusCodes.UNAUTHORIZED) {
-          toast.warn('Вы не авторизованы');
+      if (error.response && shouldDisplayError(error.response)) {
+        switch (error.response.status) {
+          case StatusCodes.BAD_REQUEST:
+            toast.warn('Неудачная попытка');
+            break;
+          case StatusCodes.UNAUTHORIZED:
+            toast.warn('Вы не авторизованы');
+            break;
+          case StatusCodes.NOT_FOUND:
+            toast.warn('Ошибка загрузки данных');
+            break;
+          default:
+            toast.warn(error.message);
+            break;
         }
-        else {
-          toast.warn(error.response.data.message);
-        }
-      }
-
-      if (error.response?.data.details && shouldDisplayError(error.response)) {
-        error.response.data.details.forEach((detail) =>
-          detail.messages.forEach((message) => toast.warn(message))
-        );
       }
 
       throw error;

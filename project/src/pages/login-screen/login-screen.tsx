@@ -8,21 +8,15 @@ import { useAppSelector } from '../../hooks/use-app-selector';
 import { redirectToRoute } from '../../store/action';
 import { getAuthorizationStatusAction } from '../../store/api-actions';
 import { getAuthorizationStatus } from '../../store/user-process/selectors';
-import { Credentials, LocationState } from '../../types/user';
+import { Credentials, LocationState, UserCredentialInputs } from '../../types/user';
 import { hasLetterAndNumber } from '../../utils';
-
-type Inputs = {
-  login: string;
-  password: string;
-  agreement: boolean;
-};
 
 function LoginScreen(): JSX.Element {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>({
+  } = useForm<UserCredentialInputs>({
     criteriaMode: 'all',
   });
 

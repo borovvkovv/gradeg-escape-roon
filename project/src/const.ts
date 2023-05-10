@@ -24,20 +24,18 @@ export enum ApiRoute {
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
-  Unknown = 'UNKNOWN'
+  Unknown = 'UNKNOWN',
 }
 
 export enum NameSpace {
   Data = 'DATA',
   User = 'USER',
-  App = 'APP'
+  App = 'APP',
 }
 
-export const URL_MARKER_DEFAULT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/pin.svg';
+export const URL_MARKER_DEFAULT = '/img/svg/pin-default.svg';
 
-export const URL_MARKER_CURRENT =
-  'https://assets.htmlacademy.ru/content/intensive/javascript-1/demo/interactive-map/main-pin.svg';
+export const URL_MARKER_CURRENT = '/img/svg/pin-active.svg';
 
 export enum FilterType {
   Genre = 'type',
@@ -50,11 +48,12 @@ export enum QuestLevel {
   Hard = 'hard',
 }
 
+export const MAX_LENGTH_QUEST_DESCRIPTION = 300;
 
 export enum QuestGenre {
   Adventure = 'adventures',
-  Horror= 'horror',
-  Mystic= 'mystic',
+  Horror = 'horror',
+  Mystic = 'mystic',
   Detective = 'detective',
   SciFi = 'sci-fi',
 }

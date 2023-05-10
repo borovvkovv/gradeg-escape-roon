@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
-import { AppRoute, QuestGenreTitleMap, QuestLevelTitleMap } from '../../const';
+import { AppRoute, MAX_LENGTH_QUEST_DESCRIPTION, QuestGenreTitleMap, QuestLevelTitleMap } from '../../const';
 import { useAppSelector } from '../../hooks/use-app-selector';
 import useGetQuest from '../../hooks/use-get-quest';
 import { getIsQuestLoading } from '../../store/data-process/selectors';
+import { cutText } from '../../utils';
 import LoadingScreen from '../loading-screen/loading-screen';
 import NotFoundSreen from '../not-found-screen/not-found-screen';
 
@@ -90,7 +91,7 @@ function QuestScreen(): JSX.Element {
                 {QuestLevelTitleMap[level]}
               </li>
             </ul>
-            <p className='quest-page__description'>{description}</p>
+            <p className='quest-page__description'>{cutText(description, MAX_LENGTH_QUEST_DESCRIPTION)}</p>
             <Link
               className='btn btn--accent btn--cta quest-page__btn'
               to={AppRoute.Booking.replace(':questId', id)}

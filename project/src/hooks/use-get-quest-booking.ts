@@ -1,16 +1,21 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { fetchQuestBookingAction } from '../store/api-actions';
+import { fetchQuestBookingListAction } from '../store/api-actions';
+import { getBookingInfoList } from '../store/data-process/selectors';
 import { useAppDispatch } from './use-app-dispatch';
+import { useAppSelector } from './use-app-selector';
 
 export default function useGetQuestBooking() {
   const { questId: idAsString } = useParams();
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     if (idAsString) {
-      dispatch(fetchQuestBookingAction(idAsString));
+      dispatch(fetchQuestBookingListAction(idAsString));
     }
   }, [dispatch, idAsString]);
 
-  return idAsString;
+  const bookingInfoList = useAppSelector(getBookingInfoList);
+
+  return { idAsString, bookingInfoList };
 }

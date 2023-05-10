@@ -22,6 +22,7 @@ export type DataProcess = {
   isBookingInfoLoading: boolean;
   myBookings: MyBookingInfo[];
   isMyBookingsLoading: boolean;
+  isBookingQuestSending: boolean;
 };
 
 export type AppProcess = {

@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { UseFormRegister } from 'react-hook-form';
 import { BookingDate } from '../../const';
 import { BookingScreenInputs } from '../../types/booking';
+import { formatDateTime } from '../../utils';
 
 type BookingTimeSlotProps = {
   bookingDate: BookingDate;
@@ -27,12 +28,8 @@ function BookingTimeSlot({
           required: 'Необходимо выбрать время',
         })}
         type='radio'
-        id={`${bookingDate}${bookingTime.split(':')[0]}h${
-          bookingTime.split(':')[0]
-        }m`}
-        value={`${bookingDate}${bookingTime.split(':')[0]}h${
-          bookingTime.split(':')[0]
-        }m`}
+        id={formatDateTime(bookingDate, bookingTime)}
+        value={formatDateTime(bookingDate, bookingTime)}
         disabled={isDisabled}
         onChange={() => onChange(bookingDate, bookingTime)}
         checked={isChecked}
@@ -42,9 +39,4 @@ function BookingTimeSlot({
   );
 }
 
-export default memo(
-  BookingTimeSlot,
-  (prevProps, nextProps) =>
-    prevProps.isDisabled === nextProps.isDisabled &&
-    prevProps.isChecked === nextProps.isChecked
-);
+export default memo(BookingTimeSlot);

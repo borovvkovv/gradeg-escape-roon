@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
 import { QuestInfo } from '../../types/quest';
 import { DataProcess } from '../../types/store';
-import { deleteMyQuestBookingAction, fetchMyQuestBookingsAction, fetchQuestAction, fetchQuestBookingAction, fetchQuestsAction } from '../api-actions';
+import { bookQuestAction, deleteMyQuestBookingAction, fetchMyQuestBookingsAction, fetchQuestAction, fetchQuestBookingListAction, fetchQuestsAction } from '../api-actions';
 
 const initialState: DataProcess = {
   quests: [],
@@ -13,6 +13,7 @@ const initialState: DataProcess = {
   isBookingInfoLoading: false,
   myBookings: [],
   isMyBookingsLoading: false,
+  isBookingQuestSending: false,
 };
 
 export const dataProcess = createSlice({
@@ -48,15 +49,15 @@ export const dataProcess = createSlice({
       .addCase(fetchQuestAction.rejected, (state) => {
         state.isQuestLoading = false;
       })
-      .addCase(fetchQuestBookingAction.pending, (state) => {
+      .addCase(fetchQuestBookingListAction.pending, (state) => {
         state.bookingInfoList = [];
         state.isBookingInfoLoading = true;
       })
-      .addCase(fetchQuestBookingAction.fulfilled, (state, action) => {
+      .addCase(fetchQuestBookingListAction.fulfilled, (state, action) => {
         state.bookingInfoList = action.payload;
         state.isBookingInfoLoading = false;
       })
-      .addCase(fetchQuestBookingAction.rejected, (state) => {
+      .addCase(fetchQuestBookingListAction.rejected, (state) => {
         state.isBookingInfoLoading = false;
       })
       .addCase(fetchMyQuestBookingsAction.pending, (state) => {
@@ -74,36 +75,16 @@ export const dataProcess = createSlice({
           (booking) => booking.id === action.payload
         );
         state.myBookings.splice(bookingIndexToDelete, 1);
+      })
+      .addCase(bookQuestAction.pending, (state) => {
+        state.isBookingQuestSending = true;
+      })
+      .addCase(bookQuestAction.fulfilled, (state, action) => {
+        state.isBookingQuestSending = false;
+      })
+      .addCase(bookQuestAction.rejected, (state) => {
+        state.isBookingQuestSending = false;
       });
-    //     .addCase(sendCommentAction.pending, (state) => {
-    //       state.isCommentSending = true;
-    //       state.isCommentSent = false;
-    //     })
-    //     .addCase(
-    //       sendCommentAction.fulfilled,
-    //       (state, action: PayloadAction<Review[]>) => {
-    //         state.comments = action.payload;
-    //         state.isCommentSent = true;
-    //         state.isCommentSending = false;
-    //       }
-    //     )
-    //     .addCase(sendCommentAction.rejected, (state) => {
-    //       state.isCommentSending = false;
-    //     })
-    //     .addCase(fetchRoomAction.pending, (state) => {
-    //       state.isOfferDataLoading = true;
-    //     })
-    //     .addCase(fetchRoomAction.fulfilled, (state, action) => {
-    //       state.isOfferDataLoading = false;
-
-    //       const [offer, reviews, nearbyOffers] = action.payload;
-    //       state.offer = offer;
-    //       state.comments = reviews;
-    //       state.nearbyOffers = nearbyOffers;
-    //     })
-    //     .addCase(fetchRoomAction.rejected, (state) => {
-    //       state.isOfferDataLoading = false;
-    //     });
   },
 });
 

@@ -1,4 +1,8 @@
-import { FilterType, QuestGenreFilterType, QuestLevelFilterType } from '../../const';
+import {
+  FilterType,
+  QuestGenreFilterType,
+  QuestLevelFilterType,
+} from '../../const';
 import { QuestGenreFilter, QuestLevelFilter } from '../../types/filter';
 
 type FilterItemProps = {
@@ -8,7 +12,12 @@ type FilterItemProps = {
   onClick: (value: QuestGenreFilterType | QuestLevelFilterType) => void;
 };
 
-function FilterItem({ filter, currentFilterId, filterType, onClick }: FilterItemProps): JSX.Element {
+function FilterItem({
+  filter,
+  currentFilterId,
+  filterType,
+  onClick,
+}: FilterItemProps): JSX.Element {
   return (
     <li className='filter__item'>
       <input

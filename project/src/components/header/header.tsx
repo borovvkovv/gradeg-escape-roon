@@ -9,19 +9,17 @@ import { getAuthorizationInfo } from '../../store/user-process/selectors';
 
 type HeaderProps = {
   currentPage: AppRoute;
-}
+};
 function Header({ currentPage }: HeaderProps): JSX.Element {
-  const userInfo = useAppSelector(getAuthorizationInfo);
-
   const dispatch = useAppDispatch();
+
+  const userInfo = useAppSelector(getAuthorizationInfo);
 
   return (
     <header className='header'>
       <div className='container container--size-l'>
         {currentPage === AppRoute.Root ? (
-          <span
-            className='logo header__logo'
-          >
+          <span className='logo header__logo'>
             <svg
               width='134'
               height='52'

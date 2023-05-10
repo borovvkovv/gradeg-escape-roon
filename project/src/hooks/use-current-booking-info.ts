@@ -8,9 +8,14 @@ export default function useCurrentBookingInfoId(bookingInfoList: BookingInfo[]) 
   );
 
   useEffect(() => {
-    if (bookingInfoList.length > 0) {
-      setCurrentBookingInfoId(bookingInfoList[0].id);
+    let isMounted = true;
+
+    if (isMounted) {
+      if (bookingInfoList.length > 0) {
+        setCurrentBookingInfoId(bookingInfoList[0].id);
+      }
     }
+    return () => {isMounted = false;};
   }, [bookingInfoList]);
 
   return {currentBookingInfoId, setCurrentBookingInfoId};

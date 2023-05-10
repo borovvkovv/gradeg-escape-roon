@@ -93,7 +93,7 @@ export const fetchQuestAction = createAsyncThunk<
   return data;
 });
 
-export const fetchQuestBookingAction = createAsyncThunk<
+export const fetchQuestBookingListAction = createAsyncThunk<
   BookingInfo[],
   string,
   {
@@ -101,7 +101,7 @@ export const fetchQuestBookingAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('data/fetchQuestBooking', async (questId, { extra: api }) => {
+>('data/fetchQuestBookingList', async (questId, { extra: api }) => {
   const { data } = await api.get<BookingInfo[]>(
     ApiRoute.QuestBooking.replace(':questId', questId)
   );

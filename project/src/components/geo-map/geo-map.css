@@ -1,0 +1,48 @@
+#geo-container {
+  position: relative;
+  height: 100%
+}
+#geo-in {
+  position: absolute;
+  background-image: url('../../../public/img/svg/RectangleMinus.svg');
+  top: 9px;
+  right: 55px;
+  width: 45px;
+  height: 28px;
+  z-index: 9000;
+  cursor: pointer;
+}
+
+#geo-in::after {
+  content: '';
+  display: block;
+  background-image: url('../../../public/img/svg/-.svg');
+  position: absolute;
+  width: 11px;
+  height:4px;
+  top: 12px;
+  left: 17px;
+}
+
+#geo-out {
+  position: absolute;
+  background-image: url('../../../public/img/svg/RectanglePlus.svg');
+  transform: rotate(180deg);
+  top: 9px;
+  right: 10px;
+  width: 45px;
+  height: 28px;
+  z-index: 9000;
+  cursor: pointer;
+}
+
+#geo-out::after {
+  content: '';
+  display: block;
+  background-image: url('../../../public/img/svg/+.svg');
+  position: absolute;
+  width: 13px;
+  height:13px;
+  top: 8px;
+  left: 15px;
+}
