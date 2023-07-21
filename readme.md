@@ -4,34 +4,16 @@
 
 Выложен в облаке https://grading-escape-room-three.vercel.app/
 
-
-Вёртска проекта в папке `build`
-
-Заготовка проекта создана при помощи CRA (Create React App) с шаблоном @htmlacademy/cra-template-typescript
-
+Создан при помощи инструмента: Create React App --typescript с шаблоном @htmlacademy/cra-template-typescript
 (https://www.npmjs.com/package/@htmlacademy/cra-template-typescript).
 
+React + Redux + Thunk
 
-## Структура проекта
+Взаимодействие с Restful серисом: Axios
 
+Валидация: React Hook Form
 
-## project
-
----
-_Не удаляйте и не изменяйте папки и файлы:_
-_`.editorconfig`, `.gitattributes`, `.gitignore`, `package.json`._
----
-
-
-### public
-
-Директория для размещения статичных ресурсов (шрифты, стили, изображения и так далее). Корневая директория проекта.
-
-
-### src
-
-В директории размещаются исходный код проекта: компоненты, файлы с тестами, модули и так далее.
-
+Уведомления: React Toastify
 
 1ч
 06.05
